@@ -10,7 +10,6 @@
 #define SET_VALS 0
 
 void VendorRequests(void) {
-    WORD temp;
     uint16_t pan = 0;
     uint16_t tilt = 0;
 

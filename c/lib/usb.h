@@ -216,5 +216,8 @@ extern void SendDataPacket(void);
 extern void VendorRequests(void);
 extern void VendorRequestsIn(void);
 extern void VendorRequestsOut(void);
+extern void InitUSB(void);
+extern void ServiceUSB(void);
+
 
 #endif
