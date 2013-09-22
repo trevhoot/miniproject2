@@ -15,11 +15,17 @@ list = Builder(action = 'xc16-objdump -S -D $SOURCE > $TARGET',
                src_suffix = 'elf')
 env.Append(BUILDERS = {'List' : list})
 
+upload = Builder(action = '../site_scons/bootloadercmd.py -i servo.hex -w')
+env.Append(BUILDERS = {'Upload' : upload})
+
 env.Program('servo', ['servo.c',
                       '../lib/timer.c',
                       '../lib/ui.c',
-					  '../lib/uart.c',
-					  '../lib/pin.c',
-					  '../lib/oc.c'])
-env.Hex('servo'),
+                      '../lib/uart.c',
+                      '../lib/usb.c',
+                      'descriptors.c',
+                      '../lib/pin.c',
+                      '../lib/oc.c'])
+env.Hex('servo')
 env.List('servo')
+env.Upload()

@@ -1,15 +1,20 @@
 import time
 import serial
+import sys
 
+port='/dev/ttyUSB1'
+if len(sys.argv) == 2:
+  port = sys.argv[1]
 # configure the serial connections (the parameters differs on the device you are connecting to)
 ser = serial.Serial(
-    port='/dev/ttyUSB1',
+    port=port,
     baudrate=9600,
     parity=serial.PARITY_ODD,
     stopbits=serial.STOPBITS_TWO,
     bytesize=serial.SEVENBITS
 )
 
+ser.close()
 ser.open()
 ser.isOpen()
 
@@ -31,8 +36,13 @@ while 1 :
         out = ''
         # let's wait one second before reading output (let's give device time to answer)
         time.sleep(1)
+        print "starting bytes"
         while ser.inWaiting() > 0:
-            out += ser.read(1)
+          byte = ser.read(1)
+          out += byte
+          print byte,
+          print ord(byte)
 
+        print "bytes ended"
         if out != '':
             print ">>" + out
