@@ -1,0 +1,5 @@
+*.hex
+*.pyc
+*.o
+*.lst
+*.elf
