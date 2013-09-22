@@ -47,8 +47,8 @@ int16_t main(void) {
     init_pin();
     init_oc();
 
-    oc_servo(&oc1, &D[2], &timer1, 20e-3, 7e-4, 2.3e-3, (uint16_t)(0.9*65536));
-    oc_servo(&oc2, &D[3], &timer2, 20e-3, 7e-4, 2.3e-3, (uint16_t)(0.9*65536)); //try using the same timer
+    oc_servo(&oc1, &D[2], &timer1, 20e-3, 5.5e-4, 23.8e-4, (uint16_t)(0.9*65536));
+    oc_servo(&oc2, &D[3], &timer2, 20e-3, 6e-4, 25e-4, (uint16_t)(0.9*65536)); //try using the same timer
 
     InitUSB();                              // initialize the USB registers and serial interface engine
     while (USB_USWSTAT!=CONFIG_STATE) {     // while the peripheral is not configured...
