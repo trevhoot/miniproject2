@@ -3,3 +3,6 @@
 *.o
 *.lst
 *.elf
+
+
+.sconsign.dblite
